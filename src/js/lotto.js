@@ -1,6 +1,6 @@
 // TODO 구입 기능
 
-// -[] 로또 구입금액 입력하면 금액에 해당하는 로또를 발급한다
+// -[x] 로또 구입금액 입력하면 금액에 해당하는 로또를 발급한다
     // -[x] 로또를 구입하면 총 ~개를 구매하였습니다.
     // -[x] 로또 1장의 가격은 1000원이다
     // -[x] 로또 구매금액은 몫만 추출해서 개수로 반환  ( 1000원 단위로 맞춰줘야함 )
@@ -16,8 +16,7 @@ const LOTTO = 1000;
 
 
 const lottoTicekIcon=()=>{
-    return `<span class="lotto-icon mx-1 text-4xl" >🎟️ </span>
-`;
+    return `<span class="lotto-icon mx-1 text-4xl" >🎟️ </span>`;
 };
 
 moneyBtn.addEventListener("click",()=>{
@@ -29,9 +28,6 @@ moneyBtn.addEventListener("click",()=>{
     const getCount = Math.floor(Number(inputValue/LOTTO));
 
     lottoCount.innerHTML=`총 ${getCount}개를 구매하였습니다.`;
-
-
-
     lottoContainer.innerHTML=lottoTicekIcon().repeat(getCount);
 
 
