@@ -21,4 +21,18 @@ describe('My First Test', () => {
         });
 
     });
+
+
+    it('로또 구입금액 입력 1000원 미만인지 테스트',()=>{
+
+        const stub = cy.stub();
+        cy.on('window:alert',stub);
+
+
+        cy.get('#input-number').type(100);
+        cy.get('#input-btn').click()
+            .then(()=>{
+               expect(stub.getCall(0)).to.calledWith('1000원 이상입력하셔야 구매 할 수 있습니다.');
+            });
+    });
 });

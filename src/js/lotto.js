@@ -3,6 +3,7 @@
 // -[x] 로또 구입금액 입력하면 금액에 해당하는 로또를 발급한다
     // -[x] 로또를 구입하면 총 ~개를 구매하였습니다.
     // -[x] 로또 1장의 가격은 1000원이다
+        // -[] 1000원 미만 입력할 경우 에러
     // -[x] 로또 구매금액은 몫만 추출해서 개수로 반환  ( 1000원 단위로 맞춰줘야함 )
     // -[x] 로또 아이콘 개수에 맞게 추가
 
@@ -27,9 +28,11 @@ moneyBtn.addEventListener("click",()=>{
 
     const getCount = Math.floor(Number(inputValue/LOTTO));
 
+    if(getCount < 1000){
+        alert("1000원 이상입력하셔야 구매 할 수 있습니다.");
+    }
     lottoCount.innerHTML=`총 ${getCount}개를 구매하였습니다.`;
     lottoContainer.innerHTML=lottoTicekIcon().repeat(getCount);
-
 
 
 });
