@@ -56,12 +56,7 @@ const getLottoNumber=()=>{
 
 model.addEventListener("click",()=>{
 
-    const inputValue = $('#input-number').value;
     const lottoNumber = $('#number-open');
-    let getCount = Math.floor(Number(inputValue/LOTTO));
-
-
-
 
 
     const checkNumber = $('.lotto-numbers-toggle-button');
@@ -109,7 +104,7 @@ moneyBtn.addEventListener("click",()=>{
 
     const checkNumber = $('.lotto-numbers-toggle-button');
 
-    
+
         if(lottoNumber.children.length !== getCount){
             // 클릭될때마다 이게 실행되는게 문제
             for(let i=0; i<getCount; i++){
