@@ -35,4 +35,13 @@ describe('My First Test', () => {
                expect(stub.getCall(0)).to.calledWith('1000원 이상입력하셔야 구매 할 수 있습니다.');
             });
     });
+
+
+    it('랜덤로또번호 화면에 출력 테스트',()=>{
+       cy.get('#input-number').type(1000);
+       cy.get('#input-btn').click();
+
+       cy.get('#model-window').click();
+
+    });
 });

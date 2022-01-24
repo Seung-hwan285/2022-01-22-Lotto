@@ -55,31 +55,24 @@ const getLottoNumber=()=>{
 
 
 model.addEventListener("click",()=>{
-    const lottoNumber = $('#number-open');
+
     const inputValue = $('#input-number').value;
-    const checkNumber = $('.lotto-numbers-toggle-button');
+    const lottoNumber = $('#number-open');
     let getCount = Math.floor(Number(inputValue/LOTTO));
 
 
 
 
+
+    const checkNumber = $('.lotto-numbers-toggle-button');
     if(checkNumber.checked){
         hiddenElement(lottoNumber);
 
     }
 
     else{
-
-        // 안에 span태그가 있으면 (자식요소) 삭제되게
-        if(lottoNumber.children.length !== getCount){
-            // 클릭될때마다 이게 실행되는게 문제
-            for(let i=0; i<getCount; i++){
-                lottoNumber.insertAdjacentHTML('beforeend',randomLotto(getLottoNumber()));
-            }
-        }
         openElement(lottoNumber);
     }
-
 
 
 
@@ -98,7 +91,7 @@ const hiddenElement=(e)=>{
 moneyBtn.addEventListener("click",()=>{
 
     const lottoCount = $('#lotto-count');
-
+    const lottoNumber = $('#number-open');
     const lottoContainer = $('#lotto-container-row');
     const inputValue = $('#input-number');
     let getCount = Math.floor(Number(inputValue.value/LOTTO));
@@ -114,7 +107,16 @@ moneyBtn.addEventListener("click",()=>{
         lottoContainer.innerHTML=lottoTicekIcon().repeat(getCount);
     }
 
-    // 확인 버튼 누르면 기존에 있던 로또번호 삭제하기
+    const checkNumber = $('.lotto-numbers-toggle-button');
+
+    
+        if(lottoNumber.children.length !== getCount){
+            // 클릭될때마다 이게 실행되는게 문제
+            for(let i=0; i<getCount; i++){
+                lottoNumber.insertAdjacentHTML('beforeend',randomLotto(getLottoNumber()));
+            }
+        }
+        openElement(lottoNumber);
 
 
 });
