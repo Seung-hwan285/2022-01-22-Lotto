@@ -43,6 +43,6 @@ describe('My First Test', () => {
 
        cy.get('#model-window').click();
        cy.get('#model-window').click();
-       
+
     });
 });
