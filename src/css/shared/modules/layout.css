@@ -28,6 +28,9 @@
   display: inline-block;
 }
 
+.lotto-none{
+  display: none;
+}
 /* Layout - Top / Right / Bottom / Left */
 
 .mt-2 {

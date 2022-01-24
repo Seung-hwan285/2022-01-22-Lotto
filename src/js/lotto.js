@@ -8,16 +8,17 @@
     // -[x] 로또 아이콘 개수에 맞게 추가
 
 // -[x] 소비자는 자동 구매를 할 수 있어야 한다
-// -[] 복권번호는 토글 버튼을 클릭하면 볼 수 있다
+// -[x] 복권번호는 토글 버튼을 클릭하면 볼 수 있다
     // -[x] 개수에 맞게 번호 랜덤 6개 보여주기
-    
+
+
 
 
 const $=(s)=>document.querySelector(s);
 
 const moneyBtn = $('#input-btn');
 const LOTTO = 1000;
-const model = $('.lotto-numbers-toggle-button');
+const model = $('#model-window');
 
 
 const lottoTicekIcon=()=>{
@@ -51,20 +52,47 @@ const getLottoNumber=()=>{
 }
 
 
+
+
 model.addEventListener("click",()=>{
-    const lottoNumber = $('#row-align');
+    const lottoNumber = $('#number-open');
     const inputValue = $('#input-number').value;
+    const checkNumber = $('.lotto-numbers-toggle-button');
     let getCount = Math.floor(Number(inputValue/LOTTO));
 
 
-    for(let i=0; i<getCount; i++){
-        lottoNumber.insertAdjacentHTML('beforeend',randomLotto(getLottoNumber()));
+
+
+    if(checkNumber.checked){
+        hiddenElement(lottoNumber);
+
+    }
+
+    else{
+
+        // 안에 span태그가 있으면 (자식요소) 삭제되게
+        if(lottoNumber.children.length !== getCount){
+            // 클릭될때마다 이게 실행되는게 문제
+            for(let i=0; i<getCount; i++){
+                lottoNumber.insertAdjacentHTML('beforeend',randomLotto(getLottoNumber()));
+            }
+        }
+        openElement(lottoNumber);
     }
 
 
-})
 
 
+});
+
+
+const openElement =(e)=>{
+    return e.classList.remove('lotto-none');
+};
+
+const hiddenElement=(e)=>{
+    return e.classList.add('lotto-none');
+}
 
 
 moneyBtn.addEventListener("click",()=>{
@@ -72,18 +100,22 @@ moneyBtn.addEventListener("click",()=>{
     const lottoCount = $('#lotto-count');
 
     const lottoContainer = $('#lotto-container-row');
-    const inputValue = $('#input-number').value;
-    let getCount = Math.floor(Number(inputValue/LOTTO));
+    const inputValue = $('#input-number');
+    let getCount = Math.floor(Number(inputValue.value/LOTTO));
 
 
-    console.log(inputValue);
-    if(inputValue < 1000){
+    if(inputValue.value < 1000){
         alert("1000원 이상입력하셔야 구매 할 수 있습니다.");
     }
+
+
     else{
         lottoCount.innerHTML=`총 ${getCount}개를 구매하였습니다.`;
         lottoContainer.innerHTML=lottoTicekIcon().repeat(getCount);
     }
+
+    // 확인 버튼 누르면 기존에 있던 로또번호 삭제하기
+
 
 });
 
