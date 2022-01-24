@@ -45,4 +45,11 @@ describe('My First Test', () => {
        cy.get('#model-window').click();
 
     });
+
+
+    it('결과 확인 버튼 클릭시 모달창을 통해 로또 결과 테스트',()=>{
+
+        cy.get('#input-number').type(3000);
+        cy.get('#input-btn').click();
+    });
 });

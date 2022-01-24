@@ -6,6 +6,7 @@
         // -[x] 1000원 미만 입력할 경우 에러
     // -[x] 로또 구매금액은 몫만 추출해서 개수로 반환  ( 1000원 단위로 맞춰줘야함 )
     // -[x] 로또 아이콘 개수에 맞게 추가
+    // -[] 거스름돈 추가
 
 // -[x] 소비자는 자동 구매를 할 수 있어야 한다
 // -[x] 복권번호는 토글 버튼을 클릭하면 볼 수 있다
@@ -22,8 +23,8 @@ import {checkHandle, getLottoNumber, randomLotto} from "../view/lottoview.js";
 const $=(s)=>document.querySelector(s);
 
 const moneyBtn = $('#input-btn');
-
 const model = $('#model-window');
+const winNumber = $('.open-result-modal-button');
 
 const LOTTO =1000;
 
@@ -47,5 +48,9 @@ export const lottoCheckBtnHandle =()=>{
 
 moneyBtn.addEventListener("click",lottoTicket);
 model.addEventListener("click",checkHandle);
+winNumber.addEventListener("click",()=>{
+    const random = $('.random-lotto');
+    const randomValue = random.innerText;
 
+});
 
