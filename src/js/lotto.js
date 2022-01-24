@@ -32,7 +32,7 @@ const lottoTicekIcon=()=>{
 const randomLotto=(lottoNums)=>{
 
     return `
-            <span class=random-lotto>${lottoNums}</span>
+            <span class="random-lotto">${lottoNums} </span>
             `;
 }
 
@@ -60,9 +60,9 @@ model.addEventListener("click",()=>{
 
 
     const checkNumber = $('.lotto-numbers-toggle-button');
+
     if(checkNumber.checked){
         hiddenElement(lottoNumber);
-
     }
 
     else{

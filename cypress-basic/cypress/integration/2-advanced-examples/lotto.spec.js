@@ -37,11 +37,12 @@ describe('My First Test', () => {
     });
 
 
-    it('랜덤로또번호 화면에 출력 테스트',()=>{
+    it('번호보기 버튼을 누르면 번호숨겨지는지 테스트',()=>{
        cy.get('#input-number').type(1000);
        cy.get('#input-btn').click();
 
        cy.get('#model-window').click();
-
+       cy.get('#model-window').click();
+       
     });
 });
