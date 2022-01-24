@@ -19,6 +19,6 @@ export const ticketView=()=>{
 
 
     alert(`거스름돈 ${getCountdivions} 원 입니다.`);
-    lottoCount.innerHTML=`총${getCount}개를 구매하였습니다.`;
+    lottoCount.innerHTML=`총 ${getCount}개를 구매하였습니다.`;
     lottoContainer.innerHTML=lottoTicekIcon().repeat(getCount);
 };

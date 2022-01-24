@@ -14,9 +14,7 @@ describe('My First Test', () => {
        cy.get('#lotto-count').should('have.text', `총 ${getCount}개를 구매하였습니다.`);
 
 
-
-
-        cy.get('.lotto-icon').then(lottoIcon=>{
+       cy.get('.lotto-icon').then(lottoIcon=>{
             expect(lottoIcon.length).to.equal(2);
         });
 
@@ -47,9 +45,25 @@ describe('My First Test', () => {
     });
 
 
+    it('거스름돈 기능 테스트',()=>{
+       const stub = cy.stub();
+
+       cy.on('window:alert',stub);
+
+       cy.get('#input-number').type(1234);
+       cy.get('#input-btn').click()
+           .then(()=>{
+           expect(stub.getCall(0)).to.be.calledWith('거스름돈 234 원 입니다.');
+       });
+
+
+    });
+
     it('결과 확인 버튼 클릭시 모달창을 통해 로또 결과 테스트',()=>{
 
         cy.get('#input-number').type(3000);
-        cy.get('#input-btn').click();
+        cy.get('#input-btn').click()
+
+
     });
 });
