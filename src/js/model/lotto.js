@@ -1,5 +1,4 @@
 // TODO 구입 기능
-
 // -[x] 로또 구입금액 입력하면 금액에 해당하는 로또를 발급한다
     // -[x] 로또를 구입하면 총 ~개를 구매하였습니다.
     // -[x] 로또 1장의 가격은 1000원이다
@@ -15,7 +14,7 @@
 
 // TODO 당첨 결과 기능
 // -[x] 당첨결과는 모달창으로 개수에 맞게 보여준다.
-// 
+// -[] 다시 시작버튼을 누르면 게임을 다시 시작할 수 있다.
 
 
 
@@ -182,18 +181,24 @@ export class Lotto{
 
     }
 
+
+    static lottoRestart(){
+
+
+            let link = 'index.html';
+            location.href=link;
+            location.replace(link);
+            window.open(link);
+
+    }
+
 }
 
+const reset =$('#reset');
 
 
 
 moneyBtn.addEventListener("click",lottoTicket);
 model.addEventListener("click",checkHandle);
-
-
-winNumber.addEventListener("click",()=>{
-
-
-    Lotto.lottoResult();
-});
-
+winNumber.addEventListener("click",Lotto.lottoResult);
+reset.addEventListener("click",Lotto.lottoRestart);
