@@ -13,6 +13,10 @@
     // -[x] 개수에 맞게 번호 랜덤 6개 보여주기
 
 
+// TODO 당첨 결과 기능
+// -[x] 당첨결과는 모달창으로 개수에 맞게 보여준다.
+// 
+
 
 
 import {lottoTicket} from "./Ticket.js";
@@ -37,7 +41,7 @@ export class Lotto{
         const inputValue = $('#input-number');
         let getCount = Math.floor(Number(inputValue.value/LOTTO));
         if(lottoNumber.children.length !== getCount){
-            // 클릭될때마다 이게 실행되는게 문제
+
             for(let i=0; i<getCount; i++){
                 lottoNumber.insertAdjacentHTML('beforeend',randomLotto(getLottoNumber()));
             }
@@ -89,24 +93,75 @@ export class Lotto{
 
 
             if(THREE_RESULT === count){
-                THREE_COUNT.innerHTML= `${count}개`;
+                $('#text-title').innerHTML=` 🏆 당첨 통계 🏆 <div class="d-flex justify-center">
+            <table class="result-table border-collapse border border-black">
+              <thead>
+                <tr class="text-center">
+                  <th class="p-3">일치 갯수</th>
+                  <th class="p-3">당첨금</th>
+                  <th class="p-3">당첨 갯수</th>
+                </tr>
+              </thead>
+
+                <tr class="text-center">
+                  <td class="p-3" id="three">3개</td>
+                  <td class="p-3" >5,000</td>
+                  <td class="p-3"  id="three-result">3개</td>
+                </tr>`;
+
+                //THREE_COUNT.innerHTML= `${count}개`;
                 console.log(count);
             }
             else if ( FOUR_RESULT ===count){
-                FOUR_COUNT.innerHTML= `${count}개`;
-                console.log(count);
+                $('#text-title').innerHTML=` <div class="d-flex justify-center">
+            <table class="result-table border-collapse border border-black">
+              <thead>
+                <tr class="text-center">
+                  <th class="p-3">일치 갯수</th>
+                  <th class="p-3">당첨금</th>
+                  <th class="p-3">당첨 갯수</th>
+                </tr>
+              </thead>
+              
+                  <tr class="text-center">
+                  <td class="p-3" id="four">4개</td>
+                  <td class="p-3" >50,000</td>
+                  <td class="p-3"  id="four-result">4개</td>
+                </tr>`;
             }
+
             else if( FIVE_RESULT ===count){
-                FIVE_COUNT.innerHTML=`${count}개`;
-                console.log(count);
+                $('#text-title').innerHTML=` <div class="d-flex justify-center">
+            <table class="result-table border-collapse border border-black">
+              <thead>
+                <tr class="text-center">
+                  <th class="p-3">일치 갯수</th>
+                  <th class="p-3">당첨금</th>
+                  <th class="p-3">당첨 갯수</th>
+                </tr>
+              </thead>
+                    <tr class="text-center">
+                  <td class="p-3" id="five">5개</td>
+                  <td class="p-3" >1,500,000</td>
+                  <td class="p-3"  id="five-result">5개</td>
+                </tr>`;
             }
             else if ( SIX_RESULT ===count){
-                SIX_COUNT.innerHTML=`${count}개`;
-                console.log(count);
+                $('#text-title').innerHTML=` <div class="d-flex justify-center">
+            <table class="result-table border-collapse border border-black">
+              <thead>
+                <tr class="text-center">
+                  <th class="p-3">일치 갯수</th>
+                  <th class="p-3">당첨금</th>
+                  <th class="p-3">당첨 갯수</th>
+                </tr>
+              </thead>
+                 <tr class="text-center">
+                  <td class="p-3" id="six">6개</td>
+                  <td class="p-3" >2,000,000,000</td>
+                  <td class="p-3" id="six-result">6개</td>
+                </tr>`;
             }
-
-
-
         });
         // const randomList=Array.from(random);
         // console.log(randomList);
