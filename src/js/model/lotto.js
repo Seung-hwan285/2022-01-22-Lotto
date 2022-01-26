@@ -24,33 +24,121 @@ const $=(s)=>document.querySelector(s);
 
 const moneyBtn = $('#input-btn');
 const model = $('#model-window');
-const winNumber = $('.open-result-modal-button');
+
 
 const LOTTO =1000;
 
+const winNumber = $('.open-result-modal-button');
 
-export const lottoCheckBtnHandle =()=>{
+export class Lotto{
 
-    const lottoNumber = $('#number-open');
-    const inputValue = $('#input-number');
-    let getCount = Math.floor(Number(inputValue.value/LOTTO));
-    if(lottoNumber.children.length !== getCount){
-        // 클릭될때마다 이게 실행되는게 문제
-        for(let i=0; i<getCount; i++){
-            lottoNumber.insertAdjacentHTML('beforeend',randomLotto(getLottoNumber()));
+    static lottoCheckBtnHandle(){
+        const lottoNumber = $('#number-open');
+        const inputValue = $('#input-number');
+        let getCount = Math.floor(Number(inputValue.value/LOTTO));
+        if(lottoNumber.children.length !== getCount){
+            // 클릭될때마다 이게 실행되는게 문제
+            for(let i=0; i<getCount; i++){
+                lottoNumber.insertAdjacentHTML('beforeend',randomLotto(getLottoNumber()));
+            }
         }
+        openElement(lottoNumber);
     }
-    openElement(lottoNumber);
+
+
+
+    static lottoResult(){
+        const random = document.querySelectorAll('.random-lotto');
+        const result = ['11','24','30','41','5','2'];
+
+        const THREE_RESULT = 3;
+        const FOUR_RESULT=4;
+        const FIVE_RESULT =5;
+        const FIVE_BONUS_RESULT =6;
+        const SIX_RESULT =6;
+
+
+        const THREE_COUNT = $('#three-result');
+        const FOUR_COUNT = $('#four-result');
+        const FIVE_COUNT = $('#five-result');
+        const FIVE_B_COUNT = $('#five-b-result');
+        const SIX_COUNT = $('#six-result');
+
+
+        let count =0;
+
+        random.forEach(number=>{
+            const stringNumber = number.innerText;
+
+            const splitNumber =stringNumber.split(",");
+
+
+
+            splitNumber.forEach(splitNum=>{
+
+                if(result.includes(splitNum)){
+                    count++;
+
+                }
+            });
+            // if(splitNumber.includes(splitNumber)){
+            //     count++;
+            //     console.log(count);
+            // }
+
+
+
+            if(THREE_RESULT === count){
+                THREE_COUNT.innerHTML= `${count}개`;
+                console.log(count);
+            }
+            else if ( FOUR_RESULT ===count){
+                FOUR_COUNT.innerHTML= `${count}개`;
+                console.log(count);
+            }
+            else if( FIVE_RESULT ===count){
+                FIVE_COUNT.innerHTML=`${count}개`;
+                console.log(count);
+            }
+            else if ( SIX_RESULT ===count){
+                SIX_COUNT.innerHTML=`${count}개`;
+                console.log(count);
+            }
+
+
+
+        });
+        // const randomList=Array.from(random);
+        // console.log(randomList);
+        // const randomValue = randomList.map(number=>number.innerText);
+
+
+
+        // result.forEach(number=>{
+        //     // 로또번호들이 문자열로 들어가고 있음 분리해서 비교해줘야함
+        //     console.log(randomValue);
+        //     if(randomValue.includes(number)){
+        //         count++;
+        //         console.log(count);
+        //     }
+        //
+        // });
+
+
+    }
 
 }
 
 
 
+
 moneyBtn.addEventListener("click",lottoTicket);
 model.addEventListener("click",checkHandle);
-winNumber.addEventListener("click",()=>{
-    const random = $('.random-lotto');
-    const randomValue = random.innerText;
 
+
+winNumber.addEventListener("click",()=>{
+
+
+    Lotto.lottoResult();
 });
 

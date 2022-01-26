@@ -1,5 +1,5 @@
 import {ticketView} from "../view/Ticketview.js";
-import {lottoCheckBtnHandle} from "../model/lotto.js";
+import {Lotto} from "../model/lotto.js";
 
 const $=(s)=>document.querySelector(s);
 
@@ -13,7 +13,7 @@ export const TicketHandle=()=>{
     }
 
     else{
-        lottoCheckBtnHandle();
+        Lotto.lottoCheckBtnHandle();
         ticketView();
     }
 }
