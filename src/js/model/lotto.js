@@ -21,6 +21,7 @@
 import {lottoTicket} from "./Ticket.js";
 import {openElement} from "../controller/lottoController.js";
 import {checkHandle, getLottoNumber, randomLotto} from "../view/lottoview.js";
+import {FIVE_RESULT, FOUR_RESULT, SIX_RESULT, THREE_RESULT} from "../utils/constant.js";
 
 
 const $=(s)=>document.querySelector(s);
@@ -54,11 +55,7 @@ export class Lotto{
         const random = document.querySelectorAll('.random-lotto');
         const result = ['11','24','30','41','5','2'];
 
-        const THREE_RESULT = 3;
-        const FOUR_RESULT=4;
-        const FIVE_RESULT =5;
-        const FIVE_BONUS_RESULT =6;
-        const SIX_RESULT =6;
+
 
 
         const THREE_COUNT = $('#three-result');
@@ -96,7 +93,7 @@ export class Lotto{
             <table class="result-table border-collapse border border-black">
               <thead>
                 <tr class="text-center">
-                  <th class="p-3">일치 갯수</th>
+                  <th class="p-3 same-count">일치 갯수</th>
                   <th class="p-3">당첨금</th>
                   <th class="p-3">당첨 갯수</th>
                 </tr>
@@ -116,7 +113,7 @@ export class Lotto{
             <table class="result-table border-collapse border border-black">
               <thead>
                 <tr class="text-center">
-                  <th class="p-3">일치 갯수</th>
+                  <th class="p-3 same-count">일치 갯수</th>
                   <th class="p-3">당첨금</th>
                   <th class="p-3">당첨 갯수</th>
                 </tr>
@@ -134,7 +131,7 @@ export class Lotto{
             <table class="result-table border-collapse border border-black">
               <thead>
                 <tr class="text-center">
-                  <th class="p-3">일치 갯수</th>
+                  <th class="p-3 same-count">일치 갯수</th>
                   <th class="p-3">당첨금</th>
                   <th class="p-3">당첨 갯수</th>
                 </tr>
@@ -150,7 +147,7 @@ export class Lotto{
             <table class="result-table border-collapse border border-black">
               <thead>
                 <tr class="text-center">
-                  <th class="p-3">일치 갯수</th>
+                  <th class="p-3 same-count">일치 갯수</th>
                   <th class="p-3">당첨금</th>
                   <th class="p-3">당첨 갯수</th>
                 </tr>
@@ -184,14 +181,12 @@ export class Lotto{
 
     static lottoRestart(){
 
-
             let link = 'index.html';
             location.href=link;
             location.replace(link);
             window.open(link);
 
     }
-
 }
 
 const reset =$('#reset');
