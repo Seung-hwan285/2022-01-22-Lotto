@@ -59,14 +59,6 @@ describe('My First Test', () => {
 
     });
 
-    it('결과 확인 버튼 클릭시 모달창 나오는지  테스트',()=>{
 
-        cy.get('#input-number').type(5000);
-        cy.get('#input-btn').click();
-        cy.get('.open-result-modal-button').click();
-
-
-
-    });
 
 });

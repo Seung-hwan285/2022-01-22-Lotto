@@ -55,25 +55,35 @@ export class Lotto{
         const random = document.querySelectorAll('.random-lotto');
         const result = ['11','24','30','41','5','2'];
 
-
-
-
         const THREE_COUNT = $('#three-result');
         const FOUR_COUNT = $('#four-result');
         const FIVE_COUNT = $('#five-result');
         const FIVE_B_COUNT = $('#five-b-result');
         const SIX_COUNT = $('#six-result');
 
-
+        const winngNumber = document.querySelectorAll('.winning-number');
         let count =0;
+        const changeWin = [...winngNumber].map((number=>{
+            return number.value;
+        }));
+
+
+
+
+
+        // random 노드리스트랑 당첨번호 입력한 노드리스트 합쳐줘야함
 
         random.forEach(number=>{
+
+
+            const bonusNumber =$('.bonus-number');
+
             const stringNumber = number.innerText;
 
-            const splitNumber =stringNumber.split(",");
+            let splitNumber =stringNumber.split(",");
 
-
-
+            splitNumber=[...splitNumber,...changeWin];
+            console.log(splitNumber);
             splitNumber.forEach(splitNum=>{
 
                 if(result.includes(splitNum)){
@@ -106,7 +116,7 @@ export class Lotto{
                 </tr>`;
 
                 //THREE_COUNT.innerHTML= `${count}개`;
-                console.log(count);
+
             }
             else if ( FOUR_RESULT ===count){
                 $('#text-title').innerHTML=` <div class="d-flex justify-center">
@@ -159,21 +169,7 @@ export class Lotto{
                 </tr>`;
             }
         });
-        // const randomList=Array.from(random);
-        // console.log(randomList);
-        // const randomValue = randomList.map(number=>number.innerText);
 
-
-
-        // result.forEach(number=>{
-        //     // 로또번호들이 문자열로 들어가고 있음 분리해서 비교해줘야함
-        //     console.log(randomValue);
-        //     if(randomValue.includes(number)){
-        //         count++;
-        //         console.log(count);
-        //     }
-        //
-        // });
 
 
     }
@@ -185,6 +181,13 @@ export class Lotto{
             location.href=link;
             location.replace(link);
             window.open(link);
+
+    }
+
+    // 입력받은 값을 로또 리스트에 추가한다.
+    static inputNumberToYesterDay(){
+
+
 
     }
 }
