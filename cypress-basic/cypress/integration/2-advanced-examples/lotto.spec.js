@@ -56,6 +56,23 @@ describe('My First Test', () => {
            expect(stub.getCall(0)).to.be.calledWith('거스름돈 234 원 입니다.');
        });
 
+    });
+
+
+    it('당첨번호 입력 결과에 표시 테스트',()=>{
+
+        cy.get('#input-number').type(1000);
+        cy.get('#input-btn').click();
+
+
+        const result = ['11','24','30','41','5','2'];
+
+        cy.get('.winning-number').then(numbers=>{
+            [...numbers].forEach(number=>{
+               cy.wrap(number).type(result.shift());
+            });
+        });
+        cy.get('.open-result-modal-button').click();
 
     });
 
