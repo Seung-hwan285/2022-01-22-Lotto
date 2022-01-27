@@ -69,6 +69,7 @@ describe('My First Test', () => {
 
         cy.get('.winning-number').then(numbers=>{
             [...numbers].forEach(number=>{
+                console.log(number);
                cy.wrap(number).type(result.shift());
             });
         });
